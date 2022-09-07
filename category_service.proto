@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package category;
+
+option go_package = ".;pb";
+
+message CategoryId {
+  int32 id = 1;
+}
+
+message CreateCategoryRequest {
+  string name = 1;
+  string description = 2;
+  int32 order_number = 3;
+  string image = 4;
+}
+
+message GetListCategoryRequest {
+  string name = 1;
+  bool active = 2;
+  int32 limit = 3;
+  int32 page = 4;
+}
+
+message Category {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  int32 order_number = 4;
+  string image = 5;
+}
+
+message GetListCategoryResponse {
+  repeated Category category = 1;
+  int32 limit = 2;
+  int32 page = 3;
+  int32 total = 4;
+}
+
+service CategoryService {
+  rpc GetCategoryById(CategoryId) returns (Category) {};
+  rpc CreateCategory(CreateCategoryRequest) returns (Category) {};
+  rpc UpdateCategory(Category) returns (Category) {};
+  rpc DeleteCategoryById(CategoryId) returns (Category) {};
+  rpc GetListCategory(GetListCategoryRequest) returns (GetListCategoryResponse) {};
+}
