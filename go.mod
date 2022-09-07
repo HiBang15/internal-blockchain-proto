@@ -1,4 +1,4 @@
-module git02.smartosc.com/internal-blockchain/proto
+module github.com/HiBang15/internal-blockchain-proto
 
 go 1.19
 
